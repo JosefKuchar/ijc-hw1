@@ -12,9 +12,9 @@ typedef unsigned long bitset_index_t;
         calloc(2 + size / sizeof(bitset_index_t), sizeof(unsigned long)); \
     name[0] = size;
 
-#define bitset_free(a) free(a)
+#define bitset_free(name) free(name)
 
-#define bitset_size(a) a[0]
+#define bitset_size(name) name[0]
 
 #define bitset_setbit(name, index, exp)                \
     name[1 + (index / sizeof(bitset_index_t))] =       \

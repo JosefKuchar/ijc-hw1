@@ -18,7 +18,7 @@ void Eratosthenes(bitset_t bitset) {
     for (bitset_index_t i = 2; i < end; i++) {
         // Skip non prime numbers
         if (bitset_getbit(bitset, i) == 0) {
-            for (bitset_index_t n = i; n < size; n += i) {
+            for (bitset_index_t n = 2 * i; n < size; n += i) {
                 bitset_setbit(bitset, n, 1);
             }
         }
