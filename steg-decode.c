@@ -5,7 +5,7 @@
 #include "error.h"
 #include "ppm.h"
 
-#define PRIME_START 23
+#define PRIME_START 29
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -29,7 +29,7 @@ int main(int argc, char* argv[]) {
     bool end = false;
 
     // Search for primes in bitset
-    for (int i = PRIME_START; i < size; i++) {
+    for (bitset_index_t i = PRIME_START; i < size; i++) {
         // Prime found
         if (bitset_getbit(bitset, i) == 0) {
             // Construct byte bit by bit

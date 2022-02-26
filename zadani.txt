@@ -1,14 +1,14 @@
 IJC: DU1
 
 
-Jazyk C                    DU1                         23.2.2021
+Jazyk C                    DU1                         22.2.2022
 ----------------------------------------------------------------
 
 
                       Domácí úkol č.1
 
 
-Termín odevzdání:  23.3.2021
+Termín odevzdání:  22.3.2022
  Hodnocení celkem max. 15 bodů
  Čtěte pokyny na konci tohoto textu
 
@@ -88,7 +88,7 @@ A) V rozhraní "bitset.h" definujte pro datovou strukturu typu pole bitů:
    Jako testovací příklad implementujte funkci, která použije algoritmus známý
    jako Eratostenovo síto (void Eratosthenes(bitset_t pole);) a použijte ji
    pro výpočet posledních 10 prvočísel ze všech prvočísel od 2 do
-   N=200000000 (200 milionů). (Doporučuji program nejdříve odladit pro N=100.)
+   N=300000000 (300 milionů). (Doporučuji program nejdříve odladit pro N=100.)
    Funkci Eratosthenes napište do samostatného modulu "eratosthenes.c".
 
    Každé prvočíslo tiskněte na zvláštní řádek v pořadí
@@ -123,14 +123,14 @@ Poznámky:  Eratosthenovo síto (přibližná specifikace):
    2) Vybereme nejmenší index i, takový, že p[i]==0.
       Potom je i prvočíslo
    3) Pro všechny násobky i nastavíme bit p[n*i] na 1
-      ('vyškrtneme' násobky - nejsou to prvočísla)
+      ('vyškrtneme' všechny násobky i - nejsou to prvočísla)
    4) i++; dokud nejsme za sqrt(N), opakujeme bod 2 až 4
       (POZOR: sestavit s matematickou knihovnou parametrem -lm)
    5) Výsledek: v poli p jsou na prvočíselných indexech hodnoty 0
 
    https://en.wikipedia.org/wiki/Prime_number
 
-   Efektivita výpočtu: cca 1.38s na Intel i5-4690 @ 3.50GHz (gcc -O2)
+   Efektivita výpočtu: cca 2.1s na Intel i5-4690 @ 3.50GHz (gcc -O2)
    Porovnejte efektivitu obou variant (makra vs. inline funkce).
    Zamyslete se, jak by se ověřila efektivita pro (neinline) funkce.
 
@@ -185,9 +185,9 @@ B) Napište modul "error.c" s rozhraním v "error.h", který definuje
     Zpráva je řetězec znaků (char, včetně '\0') uložený po jednotlivých bitech
     (počínaje LSb) na nejnižších bitech (LSb) vybraných bajtů barevných složek
     v datech obrázku. Dekódování ukončete po dosažení '\0'.
-    Pro DU1 budou vybrané bajty určeny prvočísly (počínaje od 23) -- použijte
-    Eratostenovo síto podobně jako v příkladu "primes.c" a začněte prvočíslem 23.
-    Velikost bitového pole musí odpovídat velikosti obrazových dat.
+    Pro DU1 budou vybrané bajty určeny prvočísly (počínaje od 29) -- použijte
+    Eratostenovo síto podobně jako v příkladu "primes.c" a začněte prvočíslem 29.
+    Velikost bitového pole musí odpovídat velikosti obrazových dat RGB.
 
     Program použije error_exit v případě chyby čtení souboru (chybný formát),
     a v případě, že zpráva není korektně ukončena '\0'. Předpokládejte
@@ -210,16 +210,15 @@ Testovací obrázek: du1-obrazek.ppm
 
 
 
-C) Obecné pokyny pro vypracování domácích úkolů (rev 18.2.2020)
+C) Obecné pokyny pro vypracování domácích úkolů (rev 21.2.2022)
 
 *  Pro úkoly v jazyce C používejte ISO C11 (soubory *.c)
    Použití nepřenositelných konstrukcí není dovoleno.
 
 *  Úkoly zkontrolujte překladačem například takto:
       gcc -g -std=c11 -pedantic -Wall -Wextra priklad1.c
-   místo gcc můžete použít i jiný překladač
-!  (nebude-li úkol podle normy ISO C11, bude za 0 bodů!)
-   v  souvislosti s tím napište do poznámky na začátku
+   místo gcc můžete použít i jiný překladač.
+   V  souvislosti s tím napište do poznámky na začátku
    souboru jméno překladače, kterým byl program přeložen
    (implicitní je verze GNU C instalovaná na serveru merlin).
 
@@ -236,13 +235,13 @@ C) Obecné pokyny pro vypracování domácích úkolů (rev 18.2.2020)
    // primes.c
    // Řešení IJC-DU1, příklad a), 20.3.2111
    // Autor: Jára Cimrman, FIT
-   // Přeloženo: gcc 8.3
+   // Přeloženo: gcc 11.2
    // ...popis příkladu - poznámky, omezení, atd
 
 * Úkoly je nutné zabalit programem zip takto:
-       zip xnovak99.zip *.c *.h Makefile
+       zip xcimrm99.zip *.c *.h Makefile
 
-  Jméno xnovak99 nahradíte vlastním. ZIP neobsahuje adresáře.
+  Jméno xcimrm99 nahradíte vlastním. ZIP neobsahuje adresáře.
   Každý si zkontroluje obsah ZIP archivu jeho rozbalením v prázdném adresáři
   a napsáním "make run".
 
@@ -256,5 +255,5 @@ C) Obecné pokyny pro vypracování domácích úkolů (rev 18.2.2020)
   a to bez výjimky (+bonus v podobě návštěvy u disciplinární komise).
 
 
-Poslední modifikace: 23. February 2021
+Poslední modifikace: 22. February 2022
 Pokud naleznete na této stránce chybu, oznamte to dopisem na adresu peringer AT fit.vutbr.cz

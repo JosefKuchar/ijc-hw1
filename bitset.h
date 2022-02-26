@@ -1,16 +1,19 @@
+#include <assert.h>
 #include <stdlib.h>
 
 typedef unsigned long* bitset_t;
 
 typedef unsigned long bitset_index_t;
 
-#define bitset_create(name, size) \
-    unsigned long name[2 + size / sizeof(bitset_index_t)] = {size};
+#define bitset_create(name, size)                                   \
+    unsigned long name[2 + size / sizeof(bitset_index_t)] = {size}; \
+    // static_assert(size > 0, "bitset_create: size must be greater than 0");
 
 #define bitset_alloc(name, size)                                          \
     unsigned long* name =                                                 \
         calloc(2 + size / sizeof(bitset_index_t), sizeof(unsigned long)); \
-    name[0] = size;
+    name[0] = size;                                                       \
+    // static_assert(size > 0, "bitset_create: size must be greater than 0");
 
 #define bitset_free(name) free(name)
 

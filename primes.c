@@ -3,7 +3,7 @@
 #include "eratosthenes.h"
 #include "time.h"
 
-#define MAX 200000000
+#define MAX 300000000
 #define LAST_COUNT 10
 
 int main() {
@@ -20,7 +20,7 @@ int main() {
             largest[n++] = i;
         }
     }
-    // Print numbers
+    // Print primes
     for (int i = LAST_COUNT - 1; i >= 0; i--) {
         printf("%ld\n", largest[i]);
     }
