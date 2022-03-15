@@ -10,21 +10,21 @@ CFLAGS = -O2 -g -std=c11 -pedantic -Wall -Wextra
 
 all: primes primes-i steg-decode
 
-eratosthenes.o: eratosthenes.c eratosthenes.h bitset.h
-primes.o: primes.c bitset.h eratosthenes.h
 error.o: error.c error.h
-ppm.o: ppm.c ppm.h error.o
+eratosthenes.o: eratosthenes.c eratosthenes.h bitset.h error.h
+primes.o: primes.c eratosthenes.o
+ppm.o: ppm.c ppm.h
 
-primes: primes.o eratosthenes.o
+primes: primes.o eratosthenes.o error.o
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 
-primes-i: primes.o eratosthenes.o
+primes-i: primes.o eratosthenes.o error.o
 	$(CC) -DUSE_INLINE $(CFLAGS) $^ -o $@ -lm
 
 steg-decode: steg-decode.c ppm.o error.o eratosthenes.o
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 
-run: all
+run: primes primes-i
 	./primes
 	./primes-i
 
