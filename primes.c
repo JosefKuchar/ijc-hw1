@@ -1,3 +1,8 @@
+// primes.c
+// Řešení IJC-DU1, příklad a), 20.3.2111
+// Autor: Josef Kuchař, FIT
+// Přeloženo: gcc 9.3.0
+
 #include <stdio.h>
 #include "bitset.h"
 #include "eratosthenes.h"
@@ -10,7 +15,7 @@ int main() {
     // Record start time
     clock_t start = clock();
     // Allocate bitset
-    bitset_alloc(bitset, MAX);
+    bitset_create(bitset, MAX);
     // Calculate prime numbers
     Eratosthenes(bitset);
     // Retrieve largest numbers

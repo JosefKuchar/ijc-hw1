@@ -1,3 +1,8 @@
+// ppm.h
+// Řešení IJC-DU1, příklad a), 20.3.2111
+// Autor: Josef Kuchař, FIT
+// Přeloženo: gcc 9.3.0
+
 #ifndef PPM_H_INCLUDED
 #define PPM_H_INCLUDED
 

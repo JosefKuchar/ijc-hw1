@@ -1,3 +1,8 @@
+// bitset.h
+// Řešení IJC-DU1, příklad a), 20.3.2111
+// Autor: Josef Kuchař, FIT
+// Přeloženo: gcc 9.3.0
+
 #include <assert.h>
 #include <stdlib.h>
 #include "error.h"
@@ -17,17 +22,18 @@ typedef unsigned long bitset_index_t;
 /* PUBLIC MACROS */
 
 // Create static bitset
-#define bitset_create(name, size)                 \
-    static_assert(size > 0 && size <= 300000000); \
-    unsigned long name[2 + size / sizeof(bitset_index_t)] = {size};
+#define bitset_create(name, size)                                                \
+    static_assert(size > 0 && size <= 300000000, "bitset_create: Invalid size"); \
+    unsigned long name[1 + size / sizeof(bitset_index_t)];                       \
+    name[0] = size;
 
 // Create dynamically allocated bitset
-#define bitset_alloc(name, size)                                                            \
-    assert(size > 0 && size <= 300000000);                                                  \
-    unsigned long* name = calloc(2 + size / sizeof(bitset_index_t), sizeof(unsigned long)); \
-    if (name == NULL) {                                                                     \
-        error_exit("bitset_alloc: Chyba alokace paměti\n");                                 \
-    }                                                                                       \
+#define bitset_alloc(name, size)                                                      \
+    assert(size > 0 && size <= 300000000);                                            \
+    bitset_t name = calloc(2 + size / sizeof(bitset_index_t), sizeof(unsigned long)); \
+    if (name == NULL) {                                                               \
+        error_exit("bitset_alloc: Chyba alokace paměti\n");                           \
+    }                                                                                 \
     name[0] = size;
 
 // Free dynamically allocated bitset

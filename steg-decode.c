@@ -1,3 +1,8 @@
+// steg-decode.c
+// Řešení IJC-DU1, příklad a), 20.3.2111
+// Autor: Josef Kuchař, FIT
+// Přeloženo: gcc 9.3.0
+
 #include <stdbool.h>
 #include <stdio.h>
 #include "bitset.h"

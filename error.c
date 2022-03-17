@@ -1,3 +1,8 @@
+// error.c
+// Řešení IJC-DU1, příklad a), 20.3.2111
+// Autor: Josef Kuchař, FIT
+// Přeloženo: gcc 9.3.0
+
 #include "error.h"
 #include <stdarg.h>
 #include <stdio.h>
