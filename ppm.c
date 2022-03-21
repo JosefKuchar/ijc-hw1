@@ -1,5 +1,5 @@
 // ppm.c
-// Řešení IJC-DU1, příklad a), 20.3.2111
+// Řešení IJC-DU1, příklad a), 21.3.2022
 // Autor: Josef Kuchař, FIT
 // Přeloženo: gcc 9.3.0
 
