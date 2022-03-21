@@ -45,5 +45,5 @@ run: primes primes-i
 clean:
 	rm -f *.o *.out *.zip primes primes-i steg-decode
 
-pack: all
+pack:
 	zip xkucha28.zip *.c *.h Makefile
