@@ -11,21 +11,33 @@ LDLIBS = -lm
 
 all: primes primes-i steg-decode
 
+# Normal
 eratosthenes.o: eratosthenes.c eratosthenes.h bitset.h error.h
 error.o: error.c error.h
 ppm.o: ppm.c ppm.h error.h
 primes.o: primes.c bitset.h error.h eratosthenes.h
 steg-decode.o: steg-decode.c bitset.h error.h eratosthenes.h ppm.h
+bitset.o: bitset.c bitset.h error.h
 
-primes: primes.o eratosthenes.o error.o
+# Inline
+primes-i.o: primes.c eratosthenes.h bitset.h error.h
+	$(CC) $(CFLAGS) -DUSE_INLINE -c primes.c -o primes-i.o
+eratosthenes-i.o: eratosthenes.c eratosthenes.h bitset.h error.h
+	$(CC) $(CFLAGS) -DUSE_INLINE -c eratosthenes.c -o eratosthenes-i.o
+bitset-i.o: bitset.c bitset.h error.h
+	$(CC) $(CFLAGS) -DUSE_INLINE -c bitset.c -o bitset-i.o
+
+# Final executables
+primes: primes.o eratosthenes.o error.o bitset.o
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
-primes-i: primes.o eratosthenes.o error.o
+primes-i: primes-i.o eratosthenes-i.o error.o bitset-i.o
 	$(CC) -DUSE_INLINE $(CFLAGS) $^ -o $@ $(LDLIBS)
 
-steg-decode: steg-decode.o ppm.o error.o eratosthenes.o
+steg-decode: steg-decode.o ppm.o error.o eratosthenes.o bitset.o
 	$(CC) $(CFLAGS) $^ -o $@ $(LDLIBS)
 
+# Other
 run: primes primes-i
 	./primes
 	./primes-i

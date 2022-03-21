@@ -55,3 +55,5 @@ dkms.conf
 steg-decode
 primes
 primes-i
+
+error.c
