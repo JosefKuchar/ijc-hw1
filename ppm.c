@@ -1,5 +1,5 @@
 // ppm.c
-// Řešení IJC-DU1, příklad a), 21.3.2022
+// Řešení IJC-DU1, příklad a), 22.3.2022
 // Autor: Josef Kuchař, FIT
 // Přeloženo: gcc 9.3.0
 
@@ -35,7 +35,7 @@ struct ppm* ppm_read(const char* filename) {
 
     // Check if image is too big
     if (xsize > MAX_WIDTH || ysize > MAX_HEIGHT) {
-        warning_msg("Image is too big, max size: %dx%d", MAX_WIDTH, MAX_HEIGHT);
+        warning_msg("Image is too big, max size: %dx%d\n", MAX_WIDTH, MAX_HEIGHT);
         goto error_setup;
     }
 

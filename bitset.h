@@ -1,5 +1,5 @@
 // bitset.h
-// Řešení IJC-DU1, příklad a), 21.3.2022
+// Řešení IJC-DU1, příklad a), 22.3.2022
 // Autor: Josef Kuchař, FIT
 // Přeloženo: gcc 9.3.0
 
@@ -35,24 +35,24 @@ typedef unsigned long bitset_index_t;
 
 #define bitset_size(name) name[0]
 
-#define bitset_setbit(name, index, exp)                                                      \
-    (index >= bitset_size(name))                                                             \
-        ? (error_exit("bitset_setbit: Index %lu mimo rozsah 0..%lu", (unsigned long)(index), \
-                      bitset_size(name)),                                                    \
-           0)                                                                                \
-        : ((exp) ? (bitset[1 + ((index) / (sizeof(bitset_index_t) * CHAR_BIT))] |=           \
-                    (1UL << ((index) % (sizeof(bitset_index_t) * CHAR_BIT))))                \
-                 : (bitset[1 + ((index) / (sizeof(bitset_index_t) * CHAR_BIT))] &=           \
-                    ~(1UL << ((index) % (sizeof(bitset_index_t) * CHAR_BIT)))),              \
+#define bitset_setbit(name, index, exp)                                                        \
+    (index >= bitset_size(name))                                                               \
+        ? (error_exit("bitset_setbit: Index %lu mimo rozsah 0..%lu\n", (unsigned long)(index), \
+                      bitset_size(name)),                                                      \
+           0)                                                                                  \
+        : ((exp) ? (bitset[1 + ((index) / (sizeof(bitset_index_t) * CHAR_BIT))] |=             \
+                    (1UL << ((index) % (sizeof(bitset_index_t) * CHAR_BIT))))                  \
+                 : (bitset[1 + ((index) / (sizeof(bitset_index_t) * CHAR_BIT))] &=             \
+                    ~(1UL << ((index) % (sizeof(bitset_index_t) * CHAR_BIT)))),                \
            0)
 
-#define bitset_getbit(name, index)                                                           \
-    (index >= bitset_size(name))                                                             \
-        ? (error_exit("bitset_setbit: Index %lu mimo rozsah 0..%lu", (unsigned long)(index), \
-                      bitset_size(name)),                                                    \
-           0)                                                                                \
-        : ((name[(1 + ((index) / (sizeof(bitset_index_t) * CHAR_BIT)))] >>                   \
-            ((index) % (sizeof(bitset_index_t) * CHAR_BIT))) &                               \
+#define bitset_getbit(name, index)                                                             \
+    (index >= bitset_size(name))                                                               \
+        ? (error_exit("bitset_setbit: Index %lu mimo rozsah 0..%lu\n", (unsigned long)(index), \
+                      bitset_size(name)),                                                      \
+           0)                                                                                  \
+        : ((name[(1 + ((index) / (sizeof(bitset_index_t) * CHAR_BIT)))] >>                     \
+            ((index) % (sizeof(bitset_index_t) * CHAR_BIT))) &                                 \
            1UL)
 
 #else
@@ -69,7 +69,7 @@ inline bitset_index_t bitset_size(bitset_t bitset) {
 
 inline void bitset_setbit(bitset_t bitset, bitset_index_t index, int exp) {
     if (index >= bitset_size(bitset)) {
-        error_exit("bitset_setbit: Index %lu mimo rozsah 0..%lu", index, bitset_size(bitset));
+        error_exit("bitset_setbit: Index %lu mimo rozsah 0..%lu\n", index, bitset_size(bitset));
     }
 
     const unsigned long arr_index = 1 + index / (sizeof(bitset_index_t) * CHAR_BIT);
@@ -84,7 +84,7 @@ inline void bitset_setbit(bitset_t bitset, bitset_index_t index, int exp) {
 
 inline unsigned long bitset_getbit(bitset_t bitset, bitset_index_t index) {
     if (index >= bitset_size(bitset)) {
-        error_exit("bitset_setbit: Index %lu mimo rozsah 0..%lu", index, bitset_size(bitset));
+        error_exit("bitset_setbit: Index %lu mimo rozsah 0..%lu\n", index, bitset_size(bitset));
     }
 
     const unsigned long arr_index = 1 + (index / (sizeof(bitset_index_t) * CHAR_BIT));

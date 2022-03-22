@@ -1,5 +1,5 @@
 // steg-decode.c
-// Řešení IJC-DU1, příklad a), 21.3.2022
+// Řešení IJC-DU1, příklad a), 22.3.2022
 // Autor: Josef Kuchař, FIT
 // Přeloženo: gcc 9.3.0
 
@@ -55,9 +55,10 @@ int main(int argc, char* argv[]) {
             }
         }
     }
+    putc('\n', stdout);
 
     if (!end) {
-        error_exit("String end \"\\0\" not found!");
+        error_exit("String end \"\\0\" not found!\n");
     }
 
     bitset_free(bitset);

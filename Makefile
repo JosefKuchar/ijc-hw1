@@ -1,5 +1,5 @@
 # Makefile
-# Řešení IJC-DU1, 21.3.2022
+# Řešení IJC-DU1, 22.3.2022
 # Autor: Josef Kuchař, FIT
 # Přeloženo: gcc 9.3.0
 
@@ -39,8 +39,8 @@ steg-decode: steg-decode.o ppm.o error.o eratosthenes.o bitset.o
 
 # Other
 run: primes primes-i
-	./primes
-	./primes-i
+	ulimit -s 40000 && ./primes
+	ulimit -s 40000 && ./primes-i
 
 clean:
 	rm -f *.o *.out *.zip primes primes-i steg-decode
